@@ -1,10 +1,11 @@
 import React from 'react'
+import classes from './ContactDetails.module.scss'
 
 const ContactDetails = () => {
   return (
-    <div>
+    <section className={classes.contactDetails}>
       Contact Details
-    </div>
+    </section>
   )
 }
 

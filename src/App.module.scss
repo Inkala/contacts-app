@@ -1,4 +1,12 @@
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 100vh;
+  .contactsSection {
+    border: 1px dashed red;
+  }
+  .displaySection {
+    border: 1px dashed turquoise;
+  }
 }
 

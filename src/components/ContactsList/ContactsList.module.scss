@@ -1,0 +1,18 @@
+.contactsList {
+  border: 1px dashed green;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.contactElement {
+  border-bottom: 1px solid lightgray;
+  padding: 10px;
+  a {
+    color: darkslategrey;
+    text-decoration: none;
+  }
+}
