@@ -1,11 +1,23 @@
 import React from 'react';
-import './App.css';
+import { Route } from 'react-router-dom';
+
+import classes from './App.module.scss';
+import ContactsList from './components/ContactsList/ContactsList';
+import ContactDetails from './components/ContactDetails/ContactDetails';
 
 function App() {
   return (
-    <div className="App">
-      <h1>My Contacts</h1>
-    </div>
+    <main className="App">
+      <section className={classes.contactsSection}>
+        <ContactsList />
+        <p>contacts List</p>
+      </section>
+      <section className={classes.displaySection}>
+        <p>Search Bar</p>
+        <ContactDetails />
+        <Route path="/contact/:id" exact component={ContactDetails} />
+      </section>
+    </main>
   );
 }
 
