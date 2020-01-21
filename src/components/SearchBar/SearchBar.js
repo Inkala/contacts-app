@@ -33,14 +33,7 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  searchTerm: PropTypes.string,
   onSearchChange: PropTypes.func
-};
-
-const mapStateToProps = state => {
-  return {
-    searchTerm: state.searchTerm
-  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -49,4 +42,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(null, mapDispatchToProps)(SearchBar);

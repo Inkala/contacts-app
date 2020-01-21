@@ -41,3 +41,10 @@ export const setSearchTerm = searchTerm => {
     searchTerm
   };
 };
+
+export const setStartLetter = letter => {
+  return {
+    type: actionTypes.SET_START_LETTER,
+    startLetter: letter
+  }
+}

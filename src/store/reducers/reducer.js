@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   contacts: [],
   oneContact: {},
-  searchTerm: ''
+  searchTerm: null,
+  startLetter: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +30,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         searchTerm: action.searchTerm
+      };
+    case actionTypes.SET_START_LETTER:      
+      return {
+        ...state,
+        startLetter: action.startLetter
       };
     default:
       return state;

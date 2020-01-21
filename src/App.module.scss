@@ -1,14 +1,21 @@
 .App {
   display: flex;
   height: 100vh;
+
   .contactsSection {
     border: 1px dashed red;
-    width: 25%;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    
+    .list {
+      display: flex;
+      height: calc(100vh - 50px);
+      margin-top: 50px;
+    }
   }
   .displaySection {
     border: 1px dashed turquoise;
-    width: 75%;
   }
 }
 

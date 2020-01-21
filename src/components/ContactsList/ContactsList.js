@@ -16,21 +16,31 @@ class ContactsList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { contacts, searchTerm } = this.props;
+    const { contacts, searchTerm, startLetter } = this.props;
 
+    if (startLetter !== prevProps.startLetter) {
+      this.handleFilterByLetter(startLetter);
+    }
     if (contacts !== prevProps.contacts) {
       this.setState({ displayedContacts: contacts });
     }
-
     if (searchTerm !== prevProps.searchTerm) {
-      this.handleContactsFilter(searchTerm);
+      this.handleFilterByName(searchTerm);
     }
   }
 
-  handleContactsFilter = searchTerm => {
+  handleFilterByName = searchTerm => {
     const filteredContacts = this.props.contacts.filter(({ name }) =>
       name.toLowerCase().match(searchTerm)
     );
+    this.setState({ displayedContacts: filteredContacts });
+  };
+
+  handleFilterByLetter = startLetter => {
+    const filteredContacts = this.props.contacts.filter(({ name }) => {
+      name = name.trim().toUpperCase();
+      return name[0] === startLetter;
+    });
     this.setState({ displayedContacts: filteredContacts });
   };
 
@@ -45,21 +55,19 @@ class ContactsList extends Component {
               .sort((c1, c2) => c1.name.localeCompare(c2.name))
               .map(contact => (
                 <li className={classes.contactElement} key={contact.id}>
-                  <NavLink to={`/contacts/${contact.id}`}>{contact.name}</NavLink>
+                  <NavLink to={`/contacts/${contact.id}`}>
+                    {contact.name}
+                  </NavLink>
                 </li>
               ))}
           </ul>
         );
       } else {
-        contactsList = <p>Name not found</p>
+        contactsList = <p>Name not found</p>;
       }
     }
 
-    return (
-      <section className={classes.contactsList}>
-        {contactsList}
-      </section>
-    );
+    return <section className={classes.contactsList}>{contactsList}</section>;
   }
 }
 
@@ -67,6 +75,7 @@ ContactsList.propTypes = {
   contacts: PropTypes.array,
   loading: PropTypes.bool,
   searchTerm: PropTypes.string,
+  startLetter: PropTypes.string,
   onGetContacts: PropTypes.func
 };
 
@@ -75,6 +84,7 @@ const mapStateToProps = state => {
     contacts: state.contacts,
     loading: state.loading,
     searchTerm: state.searchTerm,
+    startLetter: state.startLetter,
     error: state.error
   };
 };

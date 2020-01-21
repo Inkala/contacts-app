@@ -1,0 +1,10 @@
+.sideLetters {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  button {
+    padding: 10px;
+    margin: 5px;
+  }
+}
