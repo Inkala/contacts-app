@@ -4,12 +4,13 @@ import { Route } from 'react-router-dom';
 import ContactsList from './components/ContactsList/ContactsList';
 import ContactDetails from './components/ContactDetails/ContactDetails';
 import classes from './App.module.scss';
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   return (
     <main className={classes.App}>
       <section className={classes.contactsSection}>
-        <p>Search Bar</p>
+        <SearchBar />
         <ContactsList />
       </section>
       <section className={classes.displaySection}>

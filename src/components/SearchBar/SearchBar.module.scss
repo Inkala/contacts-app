@@ -1,0 +1,23 @@
+.searchBar {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 25%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  background-color: lightsteelblue;
+
+  input {
+    width: 100%;
+    border: 1px solid lightslategrey;
+    border-radius: 10px;
+    padding: 5px 8px;
+    margin-left: 5px;
+    font-size: 0.8em;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

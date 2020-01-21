@@ -7,26 +7,57 @@ import * as actions from '../../store/actions/actions';
 import classes from './ContactsList.module.scss';
 
 class ContactsList extends Component {
+  state = {
+    displayedContacts: null
+  };
+
   componentDidMount() {
     this.props.onGetContacts();
   }
 
+  componentDidUpdate(prevProps) {
+    const { contacts, searchTerm } = this.props;
+
+    if (contacts !== prevProps.contacts) {
+      this.setState({ displayedContacts: contacts });
+    }
+
+    if (searchTerm !== prevProps.searchTerm) {
+      this.handleContactsFilter(searchTerm);
+    }
+  }
+
+  handleContactsFilter = searchTerm => {
+    const filteredContacts = this.props.contacts.filter(({ name }) =>
+      name.toLowerCase().match(searchTerm)
+    );
+    this.setState({ displayedContacts: filteredContacts });
+  };
+
   render() {
-    const { contacts } = this.props;
+    const { displayedContacts } = this.state;
+    let contactsList = <p>Loading...</p>;
+    if (displayedContacts) {
+      if (displayedContacts.length) {
+        contactsList = (
+          <ul>
+            {displayedContacts
+              .sort((c1, c2) => c1.name.localeCompare(c2.name))
+              .map(contact => (
+                <li className={classes.contactElement} key={contact.id}>
+                  <NavLink to={`/contacts/${contact.id}`}>{contact.name}</NavLink>
+                </li>
+              ))}
+          </ul>
+        );
+      } else {
+        contactsList = <p>Name not found</p>
+      }
+    }
 
     return (
       <section className={classes.contactsList}>
-        <ul>
-          {contacts
-            ? contacts
-                .sort((c1, c2) => c1.name.localeCompare(c2.name))
-                .map(contact => (
-                  <li className={classes.contactElement}>
-                    <NavLink to={`/contacts/${contact.id}`}>{contact.name}</NavLink>
-                  </li>
-                ))
-            : null}
-        </ul>
+        {contactsList}
       </section>
     );
   }

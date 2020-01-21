@@ -30,7 +30,14 @@ export const getAllContacts = () => {
         dispatch(getAllContactsSuccess(res.data));
       })
       .catch(err => {
-        // dispatch(getAllContactsFail(err));
+        dispatch(getAllContactsFail(err));
       });
+  };
+};
+
+export const setSearchTerm = searchTerm => {
+  return {
+    type: actionTypes.SET_SEARCH_TERM,
+    searchTerm
   };
 };

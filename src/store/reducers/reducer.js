@@ -19,11 +19,16 @@ const reducer = (state = initialState, action) => {
         contacts: action.contacts,
         loading: false
       };
-    case actionTypes.GET_ALL_CONTACTS_FAIL: 
+    case actionTypes.GET_ALL_CONTACTS_FAIL:
       return {
         ...state,
         loading: false,
         error: action.error
+      };
+    case actionTypes.SET_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: action.searchTerm
       };
     default:
       return state;

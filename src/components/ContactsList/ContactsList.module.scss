@@ -1,10 +1,18 @@
 .contactsList {
   border: 1px dashed green;
+  margin-top: 50px;
+  overflow: scroll;
+  height: calc(100vh - 50px);
 
   ul {
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  p {
+    margin: 0;
+    padding: 10px;
   }
 }
 
