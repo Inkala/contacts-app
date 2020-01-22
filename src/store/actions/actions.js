@@ -39,10 +39,19 @@ export const getAllContacts = () => {
   };
 };
 
-export const setSearchTerm = searchTerm => {
+export const setContactSearchTerm = searchTerm => {
   return {
-    type: actionTypes.SET_SEARCH_TERM,
-    searchTerm
+    type: actionTypes.SET_CONTACT_SEARCH_TERM,
+    contactSearchTerm: searchTerm,
+    connectionSearchTerm: ''
+  };
+};
+
+export const setConnectionSearchTerm = searchTerm => {
+  return {
+    type: actionTypes.SET_CONNECTION_SEARCH_TERM,
+    connectionSearchTerm: searchTerm,
+    contactSearchTerm: ''
   };
 };
 

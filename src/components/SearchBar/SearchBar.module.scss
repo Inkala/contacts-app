@@ -8,8 +8,8 @@
   input {
     // width: 100%;
     border: 1px solid lightslategrey;
-    border-radius: 15px;
-    padding: 6px 10px;
+    border-radius: 20px;
+    padding: 6px 12px;
     margin-left: 8px;
     font-size: 0.8em;
     width: 100%;
@@ -31,4 +31,7 @@
 .connections {
   margin-left: auto;
   width: 50%;
+  input {
+    padding: 8px 16px;
+  }
 }

@@ -8,25 +8,28 @@ import * as actions from '../../store/actions/actions';
 import classes from './SearchBar.module.scss';
 
 class SearchBar extends Component {
-  
   state = {
     inputSearch: ''
-  }
-  
-  handleFilter = event => {
-    this.setState({ inputSearch: event.target.value });
-    this.props.onSearchChange(event.target.value.toLowerCase());
   };
-  
+
+  handleFilter = event => {
+    const { type } = this.props;
+    this.setState({ inputSearch: event.target.value });
+    if (type === 'contacts') {
+      this.props.onSearchContact(event.target.value.toLowerCase());
+    } else {
+      this.props.onSearchConnection(event.target.value.toLowerCase());
+    }
+  };
+
   render() {
-    const searchClasses = [classes.searchBar]
+    const searchClasses = [classes.searchBar];
     if (this.props.type === 'contacts') {
       searchClasses.push(classes.contacts);
     }
     if (this.props.type === 'connections') {
       searchClasses.push(classes.connections);
     }
-    console.log(searchClasses)
     return (
       <section className={searchClasses.join(' ')}>
         <FontAwesomeIcon icon={faSearch} />
@@ -47,7 +50,8 @@ SearchBar.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSearchChange: searchTerm => dispatch(actions.setSearchTerm(searchTerm))
+    onSearchContact: searchTerm => dispatch(actions.setContactSearchTerm(searchTerm)),
+    onSearchConnection: searchTerm => dispatch(actions.setConnectionSearchTerm(searchTerm))
   };
 };
 

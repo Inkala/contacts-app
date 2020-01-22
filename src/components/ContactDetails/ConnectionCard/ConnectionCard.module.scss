@@ -6,7 +6,8 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.2);
-  padding: 15px;
+  padding: 18px;
+  height: 145px;
 
   .avatar {
     width: 85px;
@@ -16,6 +17,10 @@
     margin: 5px 0 10px;
     border: 5px solid $main;
     box-sizing: border-box;
+  }
+
+  p{
+    margin-top: auto;
   }
 
   &:hover {

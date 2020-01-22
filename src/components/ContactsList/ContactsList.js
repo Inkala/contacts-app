@@ -89,7 +89,7 @@ const mapStateToProps = state => {
   return {
     contacts: state.contacts,
     loading: state.loading,
-    searchTerm: state.searchTerm,
+    searchTerm: state.contactSearchTerm,
     startLetter: state.startLetter,
     error: state.error
   };

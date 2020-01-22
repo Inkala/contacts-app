@@ -8,7 +8,7 @@ const ConnectionCard = ({ connection }) => {
   return (
     <article className={classes.connectionCard}>
       <div className={classes.avatar} style={avatar}></div>
-      {connection.name}
+      <p>{connection.name}</p>
     </article>
   );
 };

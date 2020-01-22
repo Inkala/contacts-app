@@ -8,14 +8,35 @@ import ConnectionCard from './ConnectionCard/ConnectionCard';
 import SearchBar from '../SearchBar/SearchBar';
 
 class ContactDetails extends Component {
+  state = {
+    displayedConnections: null
+  };
+
   componentDidUpdate(prevProps) {
-    if (prevProps.contact !== this.props.contact) {
+    const { contact, connections, searchTerm } = this.props;
+
+    if (contact !== prevProps.contact) {
       this.props.onGetConnections(this.props.contact.connections);
+    }
+    if (connections !== prevProps.connections) {
+    this.setState({ displayedConnections: connections });
+    }
+
+    if (searchTerm !== prevProps.searchTerm) {
+      this.handleFilterByName(searchTerm);
     }
   }
 
+  handleFilterByName = searchTerm => {
+    const filteredContacts = this.props.connections.filter(({ name }) =>
+      name.toLowerCase().match(searchTerm)
+    );
+    this.setState({ displayedConnections: filteredContacts });
+  };
+
   render() {
-    const { contact, connections } = this.props;
+    const { contact } = this.props;
+    const { displayedConnections } = this.state;
     let avatar = { backgroundImage: 'url(img/user_avatar.png)' };
     if (contact && contact.avatar) {
       avatar = { backgroundImage: `url(${contact.avatar})` };
@@ -35,8 +56,8 @@ class ContactDetails extends Component {
                 <p>{contact.description}</p>
               </div>
               <section className={classes.connections}>
-                {connections
-                  ? connections.map(connection => (
+                {displayedConnections
+                  ? displayedConnections.map(connection => (
                       <button
                         key={connection.id}
                         onClick={() => this.props.onClickConection(connection)}
@@ -69,6 +90,7 @@ const mapStateToProps = state => {
   return {
     contact: state.currentContact,
     connections: state.contactConnections,
+    searchTerm: state.connectionSearchTerm,
     error: state.error
   };
 };
