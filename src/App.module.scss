@@ -6,16 +6,12 @@
     border: 1px dashed red;
     display: flex;
     flex-direction: column;
-    width: 300px;
     
-    .list {
+    .contactsList {
       display: flex;
       height: calc(100vh - 50px);
       margin-top: 50px;
     }
-  }
-  .displaySection {
-    border: 1px dashed turquoise;
   }
 }
 

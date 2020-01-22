@@ -4,7 +4,8 @@ import * as actionTypes from './actionTypes';
 export const getAllContactsSuccess = contacts => {
   return {
     type: actionTypes.GET_ALL_CONTACTS_SUCCESS,
-    contacts
+    contacts,
+    currentContact: contacts[0]
   };
 };
 
@@ -26,8 +27,11 @@ export const getAllContacts = () => {
     dispatch(getAllContactsStart());
     return axios
       .get('/contacts.json')
-      .then(res => {        
-        dispatch(getAllContactsSuccess(res.data));
+      .then(res => {
+        const contacts = res.data.sort((c1, c2) =>
+          c1.name.localeCompare(c2.name)
+        );
+        dispatch(getAllContactsSuccess(contacts));
       })
       .catch(err => {
         dispatch(getAllContactsFail(err));
@@ -46,5 +50,19 @@ export const setStartLetter = letter => {
   return {
     type: actionTypes.SET_START_LETTER,
     startLetter: letter
-  }
-}
+  };
+};
+
+export const setCurrentContact = contact => {
+  return {
+    type: actionTypes.SET_CURRENT_CONTACT,
+    currentContact: contact
+  };
+};
+
+export const getConnections = connectionsArr => {
+  return {
+    type: actionTypes.GET_CONNECTIONS,
+    connectionsArr: connectionsArr
+  };
+};

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as actions from '../../store/actions/actions';
@@ -44,6 +44,10 @@ class ContactsList extends Component {
     this.setState({ displayedContacts: filteredContacts });
   };
 
+  handleNameClick = contact => {
+    this.props.onClickContact(contact);
+  };
+
   render() {
     const { displayedContacts } = this.state;
     let contactsList = <p>Loading...</p>;
@@ -52,12 +56,11 @@ class ContactsList extends Component {
         contactsList = (
           <ul>
             {displayedContacts
-              .sort((c1, c2) => c1.name.localeCompare(c2.name))
               .map(contact => (
                 <li className={classes.contactElement} key={contact.id}>
-                  <NavLink to={`/contacts/${contact.id}`}>
+                  <button onClick={() => this.handleNameClick(contact)}>
                     {contact.name}
-                  </NavLink>
+                  </button>
                 </li>
               ))}
           </ul>
@@ -66,8 +69,11 @@ class ContactsList extends Component {
         contactsList = <p>Name not found</p>;
       }
     }
-
-    return <section className={classes.contactsList}>{contactsList}</section>;
+    return (
+      <section className={classes.contactsList}>
+        {contactsList}
+      </section>
+    );
   }
 }
 
@@ -76,7 +82,8 @@ ContactsList.propTypes = {
   loading: PropTypes.bool,
   searchTerm: PropTypes.string,
   startLetter: PropTypes.string,
-  onGetContacts: PropTypes.func
+  onGetContacts: PropTypes.func,
+  onClickContact: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -91,7 +98,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetContacts: () => dispatch(actions.getAllContacts())
+    onGetContacts: () => dispatch(actions.getAllContacts()),
+    onClickContact: contact => dispatch(actions.setCurrentContact(contact))
   };
 };
 
