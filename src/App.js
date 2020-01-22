@@ -8,15 +8,16 @@ import SideLetters from './components/SideLetters/SideLetters';
 import classes from './App.module.scss';
 
 // TODO:
+// Loading
+// Create error message
 // Clean comments
 // Clean console logs
-// Create error message
 
 function App() {
   return (
     <main className={classes.App}>
       <section className={classes.contactsSection}>
-        <SearchBar />
+        <SearchBar type="contacts"/>
         <section className={classes.contactsList}>
           <SideLetters />
           <ContactsList />

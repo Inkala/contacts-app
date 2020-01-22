@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/actions';
 import classes from './ContactDetails.module.scss';
 import ConnectionCard from './ConnectionCard/ConnectionCard';
+import SearchBar from '../SearchBar/SearchBar';
 
 class ContactDetails extends Component {
   componentDidUpdate(prevProps) {
@@ -26,7 +27,7 @@ class ContactDetails extends Component {
             <header>
               <div className={classes.avatar} style={avatar}></div>
               <h1>{contact.name}</h1>
-              <div className={classes.search}>Search bar</div>
+              <SearchBar type="connections" />
             </header>
             <main>
               <div className={classes.description}>

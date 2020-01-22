@@ -8,6 +8,7 @@ import * as actions from '../../store/actions/actions';
 import classes from './SearchBar.module.scss';
 
 class SearchBar extends Component {
+  
   state = {
     inputSearch: ''
   }
@@ -18,8 +19,16 @@ class SearchBar extends Component {
   };
   
   render() {
+    const searchClasses = [classes.searchBar]
+    if (this.props.type === 'contacts') {
+      searchClasses.push(classes.contacts);
+    }
+    if (this.props.type === 'connections') {
+      searchClasses.push(classes.connections);
+    }
+    console.log(searchClasses)
     return (
-      <section className={classes.searchBar}>
+      <section className={searchClasses.join(' ')}>
         <FontAwesomeIcon icon={faSearch} />
         <input
           type="text"

@@ -6,7 +6,6 @@ import * as actions from '../../store/actions/actions';
 import classes from './SideLetters.module.scss';
 
 class SideLetters extends Component {
-  
   handleClick = letter => {
     this.props.onLetterClicked(letter);
   };

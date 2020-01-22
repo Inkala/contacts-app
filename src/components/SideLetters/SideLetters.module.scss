@@ -1,10 +1,17 @@
+@import '../../variables.scss';
+
 .sideLetters {
   display: flex;
   flex-direction: column;
   overflow: auto;
+  background-color: $gray;
+  min-width: 60px;
 
   button {
-    padding: 10px;
     margin: 5px;
+    border: none;
+    background-color: $lighter;
+    color: white;
+    padding: 10px;
   }
 }

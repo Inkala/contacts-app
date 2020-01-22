@@ -18,11 +18,14 @@ h1, h2, h3 {
 .contactsSection {
   display: flex;
   flex-direction: column;
+  width: 300px;
+  min-width: 300px;
 }
 
 .contactsList {
   display: flex;
   height: calc(100vh - 50px);
-  margin-top: 50px;
+  margin-top: 55px;
+  width: auto;
 }
 
