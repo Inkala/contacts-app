@@ -15,9 +15,10 @@ class ContactDetails extends Component {
 
   render() {
     const { contact, connections } = this.props;
-    const avatar = contact
-      ? { backgroundImage: `url(${contact.avatar})` }
-      : null;
+    let avatar = { backgroundImage: 'url(img/user_avatar.png)' };
+    if (contact && contact.avatar) {
+      avatar = { backgroundImage: `url(${contact.avatar})` };
+    }
     return (
       <section className={classes.contactDetails}>
         {contact ? (
@@ -28,12 +29,19 @@ class ContactDetails extends Component {
               <div className={classes.search}>Search bar</div>
             </header>
             <main>
-              <span>Description:</span>
-              <p>{contact.description}</p>
+              <div className={classes.description}>
+                <span>Description:</span>
+                <p>{contact.description}</p>
+              </div>
               <section className={classes.connections}>
                 {connections
                   ? connections.map(connection => (
-                      <ConnectionCard key={connection.id} connection={connection} />
+                      <button
+                        key={connection.id}
+                        onClick={() => this.props.onClickConection(connection)}
+                      >
+                        <ConnectionCard connection={connection} />
+                      </button>
                     ))
                   : null}
               </section>
@@ -67,7 +75,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGetConnections: connectionsArr =>
-      dispatch(actions.getConnections(connectionsArr))
+      dispatch(actions.getConnections(connectionsArr)),
+    onClickConection: connection =>
+      dispatch(actions.setCurrentContact(connection))
   };
 };
 

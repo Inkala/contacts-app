@@ -1,3 +1,28 @@
+@import '../../../variables.scss';
+
 .connectionCard {
-  border: 1px solid greenyellow;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+
+  .avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-size: cover;
+    margin: 5px 0 10px;
+    border: 5px solid $main;
+    box-sizing: border-box;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 8px 0px rgba(0, 0, 0, 0.35);
+    .avatar {
+      border-color: $accent;
+      box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+  }
 }
