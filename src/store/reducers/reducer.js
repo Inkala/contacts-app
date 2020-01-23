@@ -5,7 +5,8 @@ const initialState = {
   contactSearchTerm: '',
   connectionSearchTerm: '',
   startLetter: '',
-  currentContact: null
+  currentContact: null,
+  detailsShowing: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -58,6 +59,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         contactConnections: connections
+      };
+    case actionTypes.TOGGLE_DETAILS:
+      return {
+        ...state,
+        detailsShowing: !state.detailsShowing
       };
     default:
       return state;

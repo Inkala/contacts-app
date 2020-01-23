@@ -76,3 +76,9 @@ export const getConnections = connectionsArr => {
     connectionsArr: connectionsArr
   };
 };
+
+export const toggleDetails = () => {
+  return {
+    type: actionTypes.TOGGLE_DETAILS,
+  };
+};

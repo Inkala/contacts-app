@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import ConnectionCard from '../../components/ConnectionCard/ConnectionCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -69,7 +71,7 @@ class ContactDetails extends Component {
       totalConnections,
       currentPage
     } = this.state;
-    const { contact } = this.props;
+    const { contact, detailsShowing, onToggleDetails } = this.props;
     let connectionsList = (
       <p>
         <span>Name not found</span>
@@ -93,13 +95,23 @@ class ContactDetails extends Component {
     if (contact && contact.avatar) {
       avatar = { backgroundImage: `url(${contact.avatar})` };
     }
+    const contactDetailsClass = [classes.contactDetails];
+    if (!detailsShowing) {
+      contactDetailsClass.push(classes.hidden);
+    }
+
     return (
-      <section className={classes.contactDetails}>
+      <section className={contactDetailsClass.join(' ')}>
         {contact ? (
           <React.Fragment>
             <header>
-              <div className={classes.avatar} style={avatar}></div>
-              <h1>{contact.name}</h1>
+              <div className={classes.nameWrapper}>
+                <button onClick={onToggleDetails} className={classes.backButton}>
+                  <FontAwesomeIcon icon={faArrowLeft} />
+                </button>
+                <div className={classes.avatar} style={avatar}></div>
+                <h1>{contact.name}</h1>
+              </div>
               <SearchBar type="connections" />
             </header>
             <section className={classes.detailsWrapper}>
@@ -132,7 +144,8 @@ ContactDetails.propTypes = {
   connections: PropTypes.array,
   searchTerm: PropTypes.string,
   onGetConnections: PropTypes.func,
-  onClickConnection: PropTypes.func
+  onClickConnection: PropTypes.func,
+  onToggleDetails: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -140,6 +153,7 @@ const mapStateToProps = state => {
     contact: state.currentContact,
     connections: state.contactConnections,
     searchTerm: state.connectionSearchTerm,
+    detailsShowing: state.detailsShowing
   };
 };
 
@@ -148,7 +162,8 @@ const mapDispatchToProps = dispatch => {
     onGetConnections: connectionsArr =>
       dispatch(actions.getConnections(connectionsArr)),
     onClickConnection: connection =>
-      dispatch(actions.setCurrentContact(connection))
+      dispatch(actions.setCurrentContact(connection)),
+    onToggleDetails: () => dispatch(actions.toggleDetails())
   };
 };
 

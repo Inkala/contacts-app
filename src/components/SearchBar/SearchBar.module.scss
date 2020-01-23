@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   color: $gray;
-  
+
   input {
     border: 1px solid lightslategrey;
     border-radius: 20px;
@@ -12,7 +12,7 @@
     margin-left: 8px;
     font-size: 0.8em;
     width: 100%;
-    
+
     &:focus {
       outline: none;
     }
@@ -25,12 +25,36 @@
   box-sizing: border-box;
   height: 55px;
   padding: 0 15px;
-  width: 300px;
+  width: 100%;
 }
 .connections {
-  margin-left: auto;
-  width: 50%;
-  input {
-    padding: 8px 16px;
+  margin: auto;
+  width: 95%;
+}
+
+@media (min-width: 600px) {
+  .contacts {
+    width: 250px;
+  }
+  .connections {
+    width: 50%;
+    margin: 0 0 0 auto;
+
+    input {
+      padding: 7px 14px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .contacts {
+    width: 300px;
+  }
+
+  .connections {
+    width: 60%;
+    input {
+      padding: 8px 18px;
+    }
   }
 }

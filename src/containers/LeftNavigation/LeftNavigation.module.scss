@@ -1,12 +1,27 @@
 .leftNavigation {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  min-width: 300px;
+  width: 100%;
+  position: absolute;
 }
 
 .contacts {
   display: flex;
   margin-top: 55px;
   width: auto;
+}
+
+@media (min-width: 480px) {
+  .leftNavigation {
+    width: 250px;
+    min-width: 250px;
+    position: inherit;
+  }
+}
+
+@media (min-width: 1024px) {
+  .leftNavigation {
+    width: 300px;
+    min-width: 300px;
+  }
 }

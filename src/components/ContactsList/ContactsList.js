@@ -56,6 +56,7 @@ class ContactsList extends Component {
 
   handleNameClick = contact => {
     this.props.onClickContact(contact);
+    this.props.onToggleDetails();
   };
 
   handlePageChange = num => {
@@ -124,7 +125,8 @@ ContactsList.propTypes = {
   searchTerm: PropTypes.string,
   startLetter: PropTypes.string,
   onGetContacts: PropTypes.func,
-  onClickContact: PropTypes.func
+  onClickContact: PropTypes.func,
+  onToggleDetails: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -140,7 +142,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onGetContacts: () => dispatch(actions.getAllContacts()),
-    onClickContact: contact => dispatch(actions.setCurrentContact(contact))
+    onClickContact: contact => dispatch(actions.setCurrentContact(contact)),
+    onToggleDetails: () => dispatch(actions.toggleDetails())
   };
 };
 
