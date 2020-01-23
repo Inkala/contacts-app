@@ -65,7 +65,6 @@ class ContactDetails extends Component {
   render() {
     const {
       displayedConnections,
-      filteredConnections,
       connectionsPerPage,
       totalConnections,
       currentPage
@@ -109,11 +108,7 @@ class ContactDetails extends Component {
                   <span>Description:</span>
                   <p>{contact.description}</p>
                 </div>
-                {displayedConnections && filteredConnections ? (
-                  connectionsList
-                ) : (
-                  <p>Loading...</p>
-                )}
+                {connectionsList}
               </main>
               <Pagination
                 elementsPerPage={connectionsPerPage}
@@ -125,7 +120,7 @@ class ContactDetails extends Component {
             </section>
           </React.Fragment>
         ) : (
-          <p>Please select</p>
+          <p>Loading...</p>
         )}
       </section>
     );

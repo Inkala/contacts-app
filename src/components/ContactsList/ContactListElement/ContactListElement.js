@@ -6,7 +6,7 @@ const ContactListElement = ({contact, currentName, handleNameClick}) => {
   const activeClass =
     currentName === contact.name ? classes.active : null;
   return (
-    <li className={classes.contactListElement} key={contact.id}>
+    <li className={classes.contactListElement}>
       <button
         className={activeClass}
         onClick={() => handleNameClick(contact)}

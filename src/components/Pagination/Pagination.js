@@ -19,19 +19,23 @@ const Pagination = ({
           : classes.connectionsPagination
       }
     >
-      <button
-        disabled={currentPage === 1}
-        onClick={() => paginationHandler(-1)}
-      >
-        &lt;
-      </button>
-      <span>{`${currentPage}/${pagesAmount}`}</span>
-      <button
-        disabled={currentPage === pagesAmount}
-        onClick={() => paginationHandler(1)}
-      >
-        &gt;
-      </button>
+      {pagesAmount ? (
+        <React.Fragment>
+          <button
+            disabled={currentPage === 1}
+            onClick={() => paginationHandler(-1)}
+          >
+            &lt;
+          </button>
+          <span>{`${currentPage}/${pagesAmount}`}</span>
+          <button
+            disabled={currentPage === pagesAmount}
+            onClick={() => paginationHandler(1)}
+          >
+            &gt;
+          </button>
+        </React.Fragment>
+      ) : null}
     </section>
   );
 };

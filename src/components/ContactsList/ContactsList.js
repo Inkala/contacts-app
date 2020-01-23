@@ -80,7 +80,6 @@ class ContactsList extends Component {
   render() {
     const {
       displayedContacts,
-      filteredContacts,
       contactsPerPage,
       totalContacts,
       currentPage
@@ -93,6 +92,7 @@ class ContactsList extends Component {
         <ul>
           {displayedContacts.map(contact => (
             <ContactListElement
+              key={contact.id}
               contact={contact}
               currentName={currentContact.name}
               handleNameClick={this.handleNameClick}
