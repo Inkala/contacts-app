@@ -24,19 +24,21 @@ class SideLetters extends Component {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
     return (
       <section className={classes.sideLetters}>
-        {alphabet.map(l => {
-          const activeClass =
-            l === this.state.activeLetter ? classes.active : null;
-          return (
-            <button
-              key={l}
-              className={activeClass}
-              onClick={() => this.handleClick(l)}
-            >
-              {l}
-            </button>
-          );
-        })}
+        <div>
+          {alphabet.map(l => {
+            const activeClass =
+              l === this.state.activeLetter ? classes.active : null;
+            return (
+              <button
+                key={l}
+                className={activeClass}
+                onClick={() => this.handleClick(l)}
+              >
+                {l}
+              </button>
+            );
+          })}
+        </div>
       </section>
     );
   }

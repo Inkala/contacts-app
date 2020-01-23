@@ -1,0 +1,26 @@
+@import '../../variables.scss';
+
+.listPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main;
+  height: 50px;
+  color: white;
+  font-weight: 400;
+  button {
+    border: none;
+    background-color: white;
+    color: $darker;
+    padding: 5px 10px;
+    font-weight: bold;
+    &:disabled {
+      color: $text;
+      background-color: $gray;
+      cursor: none;
+    }
+  }
+  span {
+    margin: 0 10px;
+  }
+}

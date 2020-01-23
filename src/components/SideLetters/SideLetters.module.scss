@@ -1,33 +1,36 @@
 @import '../../variables.scss';
 
 .sideLetters {
-  display: flex;
-  flex-direction: column;
   overflow: auto;
   background-color: $gray;
   min-width: 60px;
+  height: calc(100vh - 50px);
+  div {
+    display: flex;
+    flex-direction: column;
+    padding: 3px 0 8px;
+    button {
+      margin: 3px 5px;
+      border: none;
+      background-color: $lighter;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
 
-  button {
-    margin: 5px;
-    border: none;
-    background-color: $lighter;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: $accent;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &.active {
-      background-color: $darker;
-      
       &:hover {
-        background-color: #5b2375;
+        background-color: $accent;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &.active {
+        background-color: $darker;
+
+        &:hover {
+          background-color: #5b2375;
+        }
       }
     }
   }
