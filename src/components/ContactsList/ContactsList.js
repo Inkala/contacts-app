@@ -50,10 +50,6 @@ class ContactsList extends Component {
       startContact,
       startContact + contactsPerPage
     );
-    console.log('contactsPerPage', contactsPerPage);
-    console.log('startContact', startContact);
-    console.log('displayedContacts', displayedContacts);
-
     this.setState({
       displayedContacts,
       totalContacts: filteredContacts.length

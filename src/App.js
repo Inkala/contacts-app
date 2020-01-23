@@ -12,6 +12,7 @@ TODO:
   Clean console logs
   PropTypes
   Code splitting
+  App name
 */
 
 function App() {
