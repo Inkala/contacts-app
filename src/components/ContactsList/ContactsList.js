@@ -123,7 +123,6 @@ ContactsList.propTypes = {
   loading: PropTypes.bool,
   searchTerm: PropTypes.string,
   startLetter: PropTypes.string,
-  error: PropTypes.any,
   onGetContacts: PropTypes.func,
   onClickContact: PropTypes.func
 };
@@ -135,7 +134,6 @@ const mapStateToProps = state => {
     loading: state.loading,
     searchTerm: state.contactSearchTerm,
     startLetter: state.startLetter,
-    error: state.error
   };
 };
 

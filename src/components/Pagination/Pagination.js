@@ -11,7 +11,7 @@ const Pagination = ({
   type
 }) => {
   const pagesAmount = Math.ceil(totalElements / elementsPerPage);
-  return (
+  return pagesAmount ? (
     <section
       className={
         type === 'contacts'
@@ -19,25 +19,21 @@ const Pagination = ({
           : classes.connectionsPagination
       }
     >
-      {pagesAmount ? (
-        <React.Fragment>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => paginationHandler(-1)}
-          >
-            &lt;
-          </button>
-          <span>{`${currentPage}/${pagesAmount}`}</span>
-          <button
-            disabled={currentPage === pagesAmount}
-            onClick={() => paginationHandler(1)}
-          >
-            &gt;
-          </button>
-        </React.Fragment>
-      ) : null}
+      <button
+        disabled={currentPage === 1}
+        onClick={() => paginationHandler(-1)}
+      >
+        &lt;
+      </button>
+      <span>{`${currentPage}/${pagesAmount}`}</span>
+      <button
+        disabled={currentPage === pagesAmount}
+        onClick={() => paginationHandler(1)}
+      >
+        &gt;
+      </button>
     </section>
-  );
+  ) : null;
 };
 
 Pagination.propTypes = {

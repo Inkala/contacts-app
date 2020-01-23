@@ -1,27 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ContactDetails from './containers/ContactDetails/ContactDetails';
 import classes from './App.module.scss';
 import LeftNavigation from './containers/LeftNavigation/LeftNavigation';
+import NetworkError from './components/NetworkError/NetworkError';
 
 /*
 TODO:
-  Loading
-  Create error message
   Clean comments
   Clean console logs
-  Code splitting
-  App name
+  Create error message
   testing
+  Responsive
 */
 
-function App() {
-  return (
+const App = ({ error }) => {
+  return error ? (
+    <NetworkError />
+  ) : (
     <main className={classes.App}>
       <LeftNavigation />
       <ContactDetails />
     </main>
   );
-}
+};
 
-export default App;
+const mapStateToProps = state => ({ error: state.error });
+
+export default connect(mapStateToProps)(App);

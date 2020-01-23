@@ -131,7 +131,6 @@ ContactDetails.propTypes = {
   contact: PropTypes.object,
   connections: PropTypes.array,
   searchTerm: PropTypes.string,
-  error: PropTypes.any,
   onGetConnections: PropTypes.func,
   onClickConnection: PropTypes.func
 };
@@ -141,7 +140,6 @@ const mapStateToProps = state => {
     contact: state.currentContact,
     connections: state.contactConnections,
     searchTerm: state.connectionSearchTerm,
-    error: state.error
   };
 };
 
