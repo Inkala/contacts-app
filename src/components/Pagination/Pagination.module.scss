@@ -4,8 +4,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  height: 55px;
+  width: 100%;
+  bottom: 0;
   background-color: $main;
-  height: 50px;
   color: white;
   font-weight: 400;
   button {

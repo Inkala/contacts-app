@@ -2,6 +2,7 @@
 
 .contactsList {
   width: 100%;
+  position: relative;
   
   ul {
     margin: 0;
@@ -9,7 +10,7 @@
     list-style: none;
     overflow: auto;
     height: 350px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 105px);
   }
 
   p {
