@@ -1,0 +1,13 @@
+.leftNavigation {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  min-width: 300px;
+}
+
+.contacts {
+  display: flex;
+  height: calc(100vh - 50px);
+  margin-top: 55px;
+  width: auto;
+}

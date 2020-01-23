@@ -43,7 +43,8 @@ export const setContactSearchTerm = searchTerm => {
   return {
     type: actionTypes.SET_CONTACT_SEARCH_TERM,
     contactSearchTerm: searchTerm,
-    connectionSearchTerm: ''
+    connectionSearchTerm: '', // Reset connections search bar
+    startLetter: '' // Reset active letter
   };
 };
 
@@ -51,7 +52,7 @@ export const setConnectionSearchTerm = searchTerm => {
   return {
     type: actionTypes.SET_CONNECTION_SEARCH_TERM,
     connectionSearchTerm: searchTerm,
-    contactSearchTerm: ''
+    contactSearchTerm: '' // Reset contacts search bar
   };
 };
 

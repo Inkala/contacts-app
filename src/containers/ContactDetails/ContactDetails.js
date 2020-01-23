@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/actions';
 import classes from './ContactDetails.module.scss';
-import ConnectionCard from './ConnectionCard/ConnectionCard';
-import SearchBar from '../SearchBar/SearchBar';
+import ConnectionCard from '../../components/ConnectionCard/ConnectionCard';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 class ContactDetails extends Component {
   state = {

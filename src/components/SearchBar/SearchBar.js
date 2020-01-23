@@ -23,11 +23,13 @@ class SearchBar extends Component {
   };
 
   render() {
+    const { type, contactSearchTerm, connectionSearchTerm } = this.props;
+
     const searchClasses = [classes.searchBar];
-    if (this.props.type === 'contacts') {
+    if (type === 'contacts') {
       searchClasses.push(classes.contacts);
     }
-    if (this.props.type === 'connections') {
+    if (type === 'connections') {
       searchClasses.push(classes.connections);
     }
     return (
@@ -35,7 +37,7 @@ class SearchBar extends Component {
         <FontAwesomeIcon icon={faSearch} />
         <input
           type="text"
-          value={this.state.inputSearch}
+          value={type === 'contacts' ? contactSearchTerm : connectionSearchTerm}
           onChange={this.handleFilter}
           placeholder="Search by name..."
         />
@@ -47,12 +49,20 @@ class SearchBar extends Component {
 SearchBar.propTypes = {
   onSearchChange: PropTypes.func
 };
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    onSearchContact: searchTerm => dispatch(actions.setContactSearchTerm(searchTerm)),
-    onSearchConnection: searchTerm => dispatch(actions.setConnectionSearchTerm(searchTerm))
+    contactSearchTerm: state.contactSearchTerm,
+    connectionSearchTerm: state.connectionSearchTerm
   };
 };
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchContact: searchTerm =>
+      dispatch(actions.setContactSearchTerm(searchTerm)),
+    onSearchConnection: searchTerm =>
+      dispatch(actions.setConnectionSearchTerm(searchTerm))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

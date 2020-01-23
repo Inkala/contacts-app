@@ -2,8 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   contacts: [],
-  contactSearchTerm: null,
-  connectionSearchTerm: null,
+  contactSearchTerm: '',
+  connectionSearchTerm: '',
   startLetter: null,
   currentContact: null
 };
@@ -32,7 +32,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         contactSearchTerm: action.contactSearchTerm,
-        connectionSearchTerm: action.connectionSearchTerm
+        connectionSearchTerm: action.connectionSearchTerm,
+        startLetter: action.startLetter
       };
     case actionTypes.SET_CONNECTION_SEARCH_TERM:
       return {

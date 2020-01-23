@@ -1,28 +1,23 @@
 import React from 'react';
-// import { Route } from 'react-router-dom';
 
-import ContactsList from './components/ContactsList/ContactsList';
-import ContactDetails from './components/ContactDetails/ContactDetails';
-import SearchBar from './components/SearchBar/SearchBar';
-import SideLetters from './components/SideLetters/SideLetters';
+import ContactDetails from './containers/ContactDetails/ContactDetails';
 import classes from './App.module.scss';
+import LeftNavigation from './containers/LeftNavigation/LeftNavigation';
 
-// TODO:
-// Loading
-// Create error message
-// Clean comments
-// Clean console logs
+/*
+TODO:
+  Loading
+  Create error message
+  Clean comments
+  Clean console logs
+  PropTypes
+  Code splitting
+*/
 
 function App() {
   return (
     <main className={classes.App}>
-      <section className={classes.contactsSection}>
-        <SearchBar type="contacts"/>
-        <section className={classes.contactsList}>
-          <SideLetters />
-          <ContactsList />
-        </section>
-      </section>
+      <LeftNavigation />
       <ContactDetails />
     </main>
   );

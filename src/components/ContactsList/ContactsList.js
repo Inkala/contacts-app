@@ -29,6 +29,7 @@ class ContactsList extends Component {
   }
 
   handleFilterByName = searchTerm => {
+    this.handleFilterByLetter('');
     const filteredContacts = this.props.contacts.filter(({ name }) =>
       name.toLowerCase().match(searchTerm)
     );
@@ -49,30 +50,33 @@ class ContactsList extends Component {
 
   render() {
     const { displayedContacts } = this.state;
+    const { currentContact } = this.props;
     let contactsList = <p>Loading...</p>;
     if (displayedContacts) {
       if (displayedContacts.length) {
         contactsList = (
           <ul>
-            {displayedContacts
-              .map(contact => (
+            {displayedContacts.map(contact => {
+              const activeClass =
+                currentContact.name === contact.name ? classes.active : null;
+              return (
                 <li className={classes.contactElement} key={contact.id}>
-                  <button onClick={() => this.handleNameClick(contact)}>
+                  <button
+                    className={activeClass}
+                    onClick={() => this.handleNameClick(contact)}
+                  >
                     {contact.name}
                   </button>
                 </li>
-              ))}
+              );
+            })}
           </ul>
         );
       } else {
         contactsList = <p>Name not found</p>;
       }
     }
-    return (
-      <section className={classes.contactsList}>
-        {contactsList}
-      </section>
-    );
+    return <section className={classes.contactsList}>{contactsList}</section>;
   }
 }
 
@@ -88,6 +92,7 @@ ContactsList.propTypes = {
 const mapStateToProps = state => {
   return {
     contacts: state.contacts,
+    currentContact: state.currentContact,
     loading: state.loading,
     searchTerm: state.contactSearchTerm,
     startLetter: state.startLetter,

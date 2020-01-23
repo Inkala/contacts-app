@@ -16,7 +16,19 @@
     cursor: pointer;
     
     &:hover {
+      background-color: $accent;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.active {
       background-color: $darker;
+      
+      &:hover {
+        background-color: #5b2375;
+      }
     }
   }
 }
