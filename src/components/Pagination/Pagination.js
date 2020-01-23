@@ -36,4 +36,12 @@ const Pagination = ({
   );
 };
 
+Pagination.propTypes = {
+  elementsPerPage: PropTypes.number,
+  totalElements: PropTypes.number,
+  paginationHandler: PropTypes.func,
+  currentPage: PropTypes.number,
+  type: PropTypes.string
+};
+
 export default Pagination;

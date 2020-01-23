@@ -4,7 +4,7 @@ const initialState = {
   contacts: [],
   contactSearchTerm: '',
   connectionSearchTerm: '',
-  startLetter: null,
+  startLetter: '',
   currentContact: null
 };
 

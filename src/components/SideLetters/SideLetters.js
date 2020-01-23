@@ -45,6 +45,7 @@ class SideLetters extends Component {
 }
 
 SideLetters.propTypes = {
+  startLetter: PropTypes.string,
   onLetterClicked: PropTypes.func
 };
 

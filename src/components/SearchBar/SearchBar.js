@@ -24,8 +24,8 @@ class SearchBar extends Component {
 
   render() {
     const { type, contactSearchTerm, connectionSearchTerm } = this.props;
-
     const searchClasses = [classes.searchBar];
+
     if (type === 'contacts') {
       searchClasses.push(classes.contacts);
     }
@@ -47,8 +47,13 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  onSearchChange: PropTypes.func
+  type: PropTypes.string,
+  contactSearchTerm: PropTypes.string,
+  connectionSearchTerm: PropTypes.string,
+  onSearchContact: PropTypes.func,
+  onSearchConnection: PropTypes.func
 };
+
 const mapStateToProps = state => {
   return {
     contactSearchTerm: state.contactSearchTerm,

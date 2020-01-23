@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import classes from './ConnectionCard.module.scss';
 
 const ConnectionCard = ({ connection }) => {
@@ -11,6 +13,10 @@ const ConnectionCard = ({ connection }) => {
       <p>{connection.name}</p>
     </article>
   );
+};
+
+ConnectionCard.propTypes = {
+  connection: PropTypes.object
 };
 
 export default ConnectionCard;

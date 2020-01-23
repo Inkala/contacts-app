@@ -86,6 +86,7 @@ class ContactsList extends Component {
     } = this.state;
     const { currentContact } = this.props;
     let contactsList = <p>Name not found</p>;
+    
     if (displayedContacts && displayedContacts.length) {
       contactsList = (
         <ul>
@@ -127,9 +128,11 @@ class ContactsList extends Component {
 
 ContactsList.propTypes = {
   contacts: PropTypes.array,
+  currentContact: PropTypes.object,
   loading: PropTypes.bool,
   searchTerm: PropTypes.string,
   startLetter: PropTypes.string,
+  error: PropTypes.any,
   onGetContacts: PropTypes.func,
   onClickContact: PropTypes.func
 };

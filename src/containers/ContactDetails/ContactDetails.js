@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import ConnectionCard from '../../components/ConnectionCard/ConnectionCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
@@ -22,7 +23,7 @@ class ContactDetails extends Component {
 
     if (contact !== prevProps.contact) {
       this.props.onGetConnections(this.props.contact.connections);
-      this.setState({currentPage: 1}) // Reset pagination when contact changes
+      this.setState({ currentPage: 1 }); // Reset pagination when contact changes
     }
     if (connections !== prevProps.connections) {
       this.setState({ filteredConnections: connections });
@@ -70,7 +71,11 @@ class ContactDetails extends Component {
       currentPage
     } = this.state;
     const { contact } = this.props;
-    let connectionsList = <p><span>Name not found</span></p>;
+    let connectionsList = (
+      <p>
+        <span>Name not found</span>
+      </p>
+    );
     if (displayedConnections && displayedConnections.length) {
       connectionsList = (
         <section className={classes.connections}>
@@ -126,6 +131,15 @@ class ContactDetails extends Component {
     );
   }
 }
+
+ContactDetails.propTypes = {
+  contact: PropTypes.object,
+  connections: PropTypes.array,
+  searchTerm: PropTypes.string,
+  error: PropTypes.any,
+  onGetConnections: PropTypes.func,
+  onClickConnection: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return {
