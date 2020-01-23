@@ -39,41 +39,37 @@
     }
   }
 
-  main {
-    padding: 0 10%;
+  .detailsWrapper {
     margin-top: 75px;
     overflow-y: auto;
+    padding: 0 10%;
     box-sizing: border-box;
-
-    .description {
-      margin: 15px 0;
-
-      p {
-        margin: 5px 0;
-      }
-    }
-  }
-
-  .connections {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 15px;
-    margin-bottom: 15px;
-
-    button {
-      border: none;
-      padding: 0;
-      font-size: 0.9em;
-      cursor: pointer;
-    }
-  }
-}
-
-@media (min-width: 900px) {
-  .contactDetails {
     main {
+      .description {
+        margin: 15px 0;
+
+        p {
+          margin: 5px 0;
+        }
+      }
+      p {
+        span {
+          color: $main;
+          font-weight: 300;
+        }
+      }
       .connections {
+        display: grid;
         grid-template-columns: repeat(4, 1fr);
+        grid-gap: 15px;
+        margin-bottom: 15px;
+
+        button {
+          border: none;
+          padding: 0;
+          font-size: 0.9em;
+          cursor: pointer;
+        }
       }
     }
   }

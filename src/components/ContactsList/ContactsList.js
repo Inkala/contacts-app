@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Pagination from '../Pagination/Pagination';
 import * as actions from '../../store/actions/actions';
 import classes from './ContactsList.module.scss';
-import Pagination from '../Pagination/Pagination';
 
 class ContactsList extends Component {
   state = {
     displayedContacts: [], // Contacts to show after filter and pagination
     filteredContacts: null, // Contacts to use on pagination
-    contactsPerPage: 30, // Number of Contacts per page
+    contactsPerPage: 50, // Number of Contacts per page
     totalContacts: 0, // Total amount of Contacts to calculate amount of pages
     currentPage: 1
   };
@@ -37,25 +37,6 @@ class ContactsList extends Component {
     }
   }
 
-  handlePageChange = num => {
-    const newPage = this.state.currentPage + num;
-    this.setState({ currentPage: newPage });
-    this.handlePagination(newPage);
-  };
-
-  handlePagination = currentPage => {
-    const { contactsPerPage, filteredContacts } = this.state;
-    const startContact = (currentPage - 1) * contactsPerPage;
-    const displayedContacts = filteredContacts.slice(
-      startContact,
-      startContact + contactsPerPage
-    );
-    this.setState({
-      displayedContacts,
-      totalContacts: filteredContacts.length
-    });
-  };
-
   handleFilterByName = searchTerm => {
     this.handleFilterByLetter('');
     const filteredContacts = this.props.contacts.filter(({ name }) =>
@@ -76,14 +57,33 @@ class ContactsList extends Component {
     this.props.onClickContact(contact);
   };
 
+  handlePageChange = num => {
+    const newPage = this.state.currentPage + num;
+    this.setState({ currentPage: newPage });
+    this.handlePagination(newPage);
+  };
+
+  handlePagination = currentPage => {
+    const { contactsPerPage, filteredContacts } = this.state;
+    const startContact = (currentPage - 1) * contactsPerPage;
+    const displayedContacts = filteredContacts.slice(
+      startContact,
+      startContact + contactsPerPage
+    );
+    this.setState({
+      displayedContacts,
+      totalContacts: filteredContacts.length
+    });
+  };
+
   render() {
     const {
       displayedContacts,
       filteredContacts,
       contactsPerPage,
+      totalContacts,
       currentPage
     } = this.state;
-
     const { currentContact } = this.props;
     let contactsList = <p>Name not found</p>;
     if (displayedContacts && displayedContacts.length) {
@@ -114,10 +114,11 @@ class ContactsList extends Component {
           <p>Loading...</p>
         )}
         <Pagination
-          contactsPerPage={contactsPerPage}
-          totalContacts={this.state.totalContacts}
+          elementsPerPage={contactsPerPage}
+          totalElements={totalContacts}
           paginationHandler={this.handlePageChange}
           currentPage={currentPage}
+          type="contacts"
         />
       </section>
     );

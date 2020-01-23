@@ -1,17 +1,24 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import classes from './Pagination.module.scss';
 
 const Pagination = ({
-  contactsPerPage,
-  totalContacts,
+  elementsPerPage,
+  totalElements,
   paginationHandler,
-  currentPage
+  currentPage,
+  type
 }) => {
-  const pagesAmount = Math.ceil(totalContacts / contactsPerPage);
+  const pagesAmount = Math.ceil(totalElements / elementsPerPage);
   return (
-    <section className={classes.listPagination}>
+    <section
+      className={
+        type === 'contacts'
+          ? classes.contactsPagination
+          : classes.connectionsPagination
+      }
+    >
       <button
         disabled={currentPage === 1}
         onClick={() => paginationHandler(-1)}
@@ -28,12 +35,5 @@ const Pagination = ({
     </section>
   );
 };
-
-// Pagination.propTypes = {
-//   cardsPerPage: PropTypes.number,
-//   totalContacts: PropTypes.number,
-//   currentPage: PropTypes.number,
-//   paginationHandler: PropTypes.func,
-// };
 
 export default Pagination;
