@@ -10,9 +10,9 @@ TODO:
   Create error message
   Clean comments
   Clean console logs
-  PropTypes
   Code splitting
   App name
+  testing
 */
 
 function App() {

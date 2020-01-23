@@ -18,28 +18,3 @@
     padding: 10px;
   }
 }
-
-.contactElement {
-  button {
-    padding: 10px 15px;
-    color: $text;
-    text-decoration: none;
-    border: none;
-    font-size: 1em;
-    border-bottom: 1px solid $gray;
-    width: 100%;
-    text-align: left;
-    &:hover {
-      background-color: $background;
-    }
-    &:focus {
-      outline: none;
-    }
-  }
-  .active {
-    background-color: $gray;
-    &:hover {
-      background-color: #becace;
-    }
-  }
-}

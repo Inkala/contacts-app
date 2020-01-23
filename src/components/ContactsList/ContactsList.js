@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Pagination from '../Pagination/Pagination';
 import * as actions from '../../store/actions/actions';
 import classes from './ContactsList.module.scss';
+import ContactListElement from './ContactListElement/ContactListElement';
 
 class ContactsList extends Component {
   state = {
@@ -84,36 +85,26 @@ class ContactsList extends Component {
       totalContacts,
       currentPage
     } = this.state;
-    const { currentContact } = this.props;
+    const { currentContact, loading } = this.props;
+
     let contactsList = <p>Name not found</p>;
-    
     if (displayedContacts && displayedContacts.length) {
       contactsList = (
         <ul>
-          {displayedContacts.map(contact => {
-            const activeClass =
-              currentContact.name === contact.name ? classes.active : null;
-            return (
-              <li className={classes.contactElement} key={contact.id}>
-                <button
-                  className={activeClass}
-                  onClick={() => this.handleNameClick(contact)}
-                >
-                  {contact.name}
-                </button>
-              </li>
-            );
-          })}
+          {displayedContacts.map(contact => (
+            <ContactListElement
+              contact={contact}
+              currentName={currentContact.name}
+              handleNameClick={this.handleNameClick}
+            />
+          ))}
         </ul>
       );
     }
+
     return (
       <section className={classes.contactsList}>
-        {displayedContacts && filteredContacts ? (
-          contactsList
-        ) : (
-          <p>Loading...</p>
-        )}
+        {loading ? <p>Loading...</p> : contactsList}
         <Pagination
           elementsPerPage={contactsPerPage}
           totalElements={totalContacts}
