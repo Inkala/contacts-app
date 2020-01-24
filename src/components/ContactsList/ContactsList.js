@@ -7,7 +7,7 @@ import * as actions from '../../store/actions/actions';
 import classes from './ContactsList.module.scss';
 import ContactListElement from './ContactListElement/ContactListElement';
 
-class ContactsList extends Component {
+export class ContactsList extends Component {
   state = {
     displayedContacts: [], // Contacts to show after filter and pagination
     filteredContacts: null, // Contacts to use on pagination
