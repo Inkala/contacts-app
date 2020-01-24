@@ -6,7 +6,7 @@ To see this test working, clone the repository, type `npm install` from the root
 
 The app has only one view that renders a left menu for the contacts and search bar and a main section for the contact details which by default shows the first contact in the list.
 
-###Technologies used
+### Technologies used
 
 For this test I chose to use [React](https://reactjs.org/) for it is the JavaScript tool in which I have more knowledge and experience.
 
