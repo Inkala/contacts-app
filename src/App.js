@@ -6,15 +6,6 @@ import classes from './App.module.scss';
 import LeftNavigation from './containers/LeftNavigation/LeftNavigation';
 import NetworkError from './components/NetworkError/NetworkError';
 
-/*
-TODO:
-  Clean comments
-  Clean console logs
-  Create error message
-  testing
-  Responsive
-*/
-
 const App = ({ error }) => {
   return error ? (
     <NetworkError />
