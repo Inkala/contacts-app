@@ -10,11 +10,11 @@ The app has only one view that renders a left menu for the contacts and search b
 
 For this test I chose to use [React](https://reactjs.org/) for it is the JavaScript tool in which I have more knowledge and experience.
 
-I used [Redux](https://redux.js.org/) because having a global state can be really usefull when handling data that should be available and modified by more than one component and because I believe it is the tool that is used used with [React](https://reactjs.org/) most often.
+I used [Redux](https://redux.js.org/) because having a global state can be really useful when handling data that should be available and modified by more than one component and because I believe it is the tool that is used used with [React](https://reactjs.org/) most often.
 
-At the beginning I added the React Router, but removed it later for the view never switches the component and the changes you see are only comming from the state and props.
+At the beginning I added the React Router, but removed it later for the view never switches the component and the changes you see are only coming from the state and props.
 
-For getching the information from the URL I used [axios](https://github.com/axios/axios).
+For fetching the information from the URL I used [axios](https://github.com/axios/axios).
 
 ### Success
 
@@ -28,7 +28,7 @@ I also haven't worked much with tests so I had to do some research on that. I tr
 
 ### What to improve
 
-There is always things that you want to improve when developing something. For example I want to add more tests, async tests, split the actions and reducers into different files.
+There are always things that you want to improve when developing something. For example I want to add more tests, async tests, split the actions and reducers into different files.
 
 The CSS can be improved as well. The transition between the Contacts List and Contact Details could be improved a lot by using some animations..
 
